@@ -1,39 +1,37 @@
-let nfts = [];
+const NFTs = [];
 
-// This function will take in some values as parameters, create an NFT object using the parameters,
-// and store it in the variable above.
-function mintNFT(name, creator, value) {
-    const nft = {
-        name: name,
-        creator: creator,
-        value: value // Now represents value in USD
+function mintNFT(_name, _eyeColor, _shirtType, _bling) {
+    const NFT = {
+        id: NFTs.length + 1, // Unique ID based on array length
+        name: _name,
+        eyeColor: _eyeColor,
+        shirtType: _shirtType,
+        bling: _bling
     };
-
-    // Store the NFT in the nfts array
-    nfts.push(nft);
+    NFTs.push(NFT);
+    console.log("Minted: " + _name);
 }
 
-// Create a function that will print all of your NFTs metadata to the console
 function listNFTs() {
-    for (let i = 0; i < nfts.length; i++) {
-        console.log("NFT " + (i + 1) + ":");
-        console.log("Name: " + nfts[i].name);
-        console.log("Creator: " + nfts[i].creator);
-        console.log("Value: $" + nfts[i].value); // Display value in USD
-        console.log("---------------------");
+    for (let i = 0; i < NFTs.length; i++) {
+        console.log(`\nID: \t\t${NFTs[i].id}`);
+        console.log(`Name: \t\t${NFTs[i].name}`);
+        console.log(`Eye Color: \t${NFTs[i].eyeColor}`);
+        console.log(`Shirt Type: \t${NFTs[i].shirtType}`);
+        console.log(`Bling: \t\t${NFTs[i].bling}`);
     }
 }
 
-// Print the total number of NFTs we have minted to the console
 function getTotalSupply() {
-    return nfts.length;
+    console.log(`\nTotal NFTs Minted: ${NFTs.length}`);
 }
 
-// Example calls to your functions with renamed NFTs and values in USD
-mintNFT("Artistic Vision", "Artist1", 100);
-mintNFT("Unique Collectible", "Artist2", 200);
-mintNFT("Epic Virtual Asset", "Artist3", 300);
+// Mint some NFTs
+mintNFT("Bob", "Blue", "Hoodie", "Gold Chain");
+mintNFT("Sue", "Blue", "Hoodie", "Gold Chain");
+mintNFT("Tim", "Blue", "Hoodie", "Gold Chain");
+mintNFT("John", "Blue", "Hoodie", "Gold Chain");
 
-// Listing NFTs and getting total supply
+// List NFTs and total supply
 listNFTs();
-console.log("Total NFTs minted: " + getTotalSupply());
+getTotalSupply();
